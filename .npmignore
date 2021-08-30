@@ -7,7 +7,5 @@ glconf.json
 src
 jest.config.js
 tsconfig.json
-
-
+.idea
 .gitlab-ci.yml
-
