@@ -1,0 +1,33 @@
+{
+  "rootDir": "../res/root",
+  "filetypes": ["ts"],
+  "externalModules": [
+    "../res/external"
+  ],
+  "baseConfig": {
+    "info": {
+      "title": "Hello World",
+      "version": "1.0.0",
+      "description": "A sample API"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:9257"
+      }
+    ],
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
+}

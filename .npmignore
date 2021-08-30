@@ -1,0 +1,13 @@
+res
+tests
+node_modules
+.eslintignore
+.eslintrc
+glconf.json
+src
+jest.config.js
+tsconfig.json
+
+
+.gitlab-ci.yml
+
