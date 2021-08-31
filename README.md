@@ -14,8 +14,8 @@ All comments with these annotations will be pasted as a singe element in the pat
 For all other OpenApi configs the `glconf.json` is used.   
 
 ## Installation
-npm i  @grandlinex/docs-to-openapi
-
+- `npm i  @grandlinex/docs-to-openapi` 
+- 
 ### Config fields
 - rootDir 
   - Relative path to your sourcecode.
@@ -45,7 +45,10 @@ npm i  @grandlinex/docs-to-openapi
              *       401:
              *         description: not authorized
              */
+
 4. run `npx @grandlinex/docs-to-openapi`
+
+> If you install the package as a dependency then you can use the `makeOpenApi` command. 
 
 ## Config File Examples:
 
