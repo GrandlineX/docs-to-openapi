@@ -1,10 +1,55 @@
 # Docs to OpenApi v.3
+[![GitHub](https://badge.fury.io/gh/GrandlineX%2Fdocs-to-openapi.svg)](https://github.com/GrandlineX/docs-to-openapi)
+[![NPM](https://img.shields.io/static/v1?label=NPM&message=Package&color=red&logo=NPM)](https://www.npmjs.com/package/@grandlinex/docs-to-openapi)
+![TS](https://img.shields.io/static/v1?label=Language&message=TypeScript&color=blue&logo=TypeScript)
 
+## Description
 
-> @BaseConfig: Basic Api config
+This Project converts comments in your code or in your dependencies to an OpenApi Spec.
+The following annotations are supported. 
+- `@openapi` 
+- `@swagger`
 
+All comments with these annotations will be pasted as a singe element in the path definition array.
+For all other OpenApi configs the `glconf.json` is used.   
 
-## Example 01 `glconf.json` (minimal)
+## Installation
+npm i  @grandlinex/docs-to-openapi
+
+### Config fields
+- rootDir 
+  - Relative path to your sourcecode.
+- filetypes 
+  -  List of file extensions to monitor.
+- externalModules
+  - If your dependencies use also these annotations you can merge these in your curren spec.
+- outPutDir (optional)
+  - Relative path for the Spec. output.  
+
+## Quick Start
+
+1. Create a `glconf.json` in the root dir of your project (see config 01 or 02).
+2. Edit your base Config file like in the official [Swagger Doc](https://swagger.io/specification/)
+3. Add a Comment to your soruce code in yml syntax like: 
+
+            /**
+             * @openapi
+             * /ping:
+             *   get:
+             *     summary: ping
+             *     tags:
+             *       - basic
+             *     responses:
+             *       200:
+             *         description: OK
+             *       401:
+             *         description: not authorized
+             */
+4. run `npx @grandlinex/docs-to-openapi`
+
+## Config File Examples:
+
+### Config 01 `glconf.json` (minimal)
 
 
       {
@@ -25,12 +70,12 @@
         }
       }
 
-## Example 02 `glconf.json` (Bearer JWT)
+### Config 02 `glconf.json` (Bearer JWT)
 
       {
         "rootDir": "./src",
         "filetypes": ["ts","js"],
-        "externalModules": [],
+        "externalModules": ["./node_modules/module_a","./node_modules/module_b"],
         "outPutDir": "./dist",
         "baseConfig": {
           "info": {
