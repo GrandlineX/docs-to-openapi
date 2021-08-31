@@ -4,6 +4,7 @@
   "description": "OpenApiTag to OpenapiSpec",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": ["OpenApi","Swagger","Docs","TypeDoc"],
   "bin": {
     "makeOpenApi": "./dist/cli.js"
   },
