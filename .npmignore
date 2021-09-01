@@ -1,4 +1,5 @@
-res
+res/external
+res/root
 tests
 node_modules
 .eslintignore
