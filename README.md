@@ -18,7 +18,7 @@ For all other OpenApi configs the `glconf.json` is used.
 
 ## Installation
 
-- `npm i  @grandlinex/docs-to-openapi` 
+- `npm i -g @grandlinex/docs-to-openapi` 
 
 ### Config fields
 
@@ -53,7 +53,15 @@ For all other OpenApi configs the `glconf.json` is used.
 
 4. run `npx @grandlinex/docs-to-openapi`
 
-> If you install the package as a dependency then you can use the `makeOpenApi` command. 
+> If you install the package as a dependency or global then you can use the `makeOpenApi` command. 
+
+## CLI Parameter
+
+|Parameter|Description|
+|---|---|
+|`--html`|Creates a swagger.html file (Standalone SwaggerUI)|
+|`--serve`|Serves the OpenApi Spec on port 9000|
+
 
 ## Config File Examples:
 

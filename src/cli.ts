@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 import * as Path from 'path';
 import * as fs from 'fs';
+import express from 'express';
 import { parseConfig, writeToFile } from './utils';
 import { GlConfig } from './lib';
 import fileIndexer from './utils/fileIndexer';
 
-const { cwd } = process;
-const version = process.env.npm_package_version;
+const { cwd, argv, env } = process;
+const version = env.npm_package_version;
 const path = cwd();
 const configPath = Path.join(path, 'glconf.json');
-
-
 
 function makeApi() {
   if (fs.existsSync(configPath)) {
@@ -26,15 +25,39 @@ function makeApi() {
       const externalDir = Path.join(path, external);
       rawData = rawData.concat(fileIndexer(externalDir, config.filetypes));
     });
-    let specPath;
-    if (config.outPutDir){
-      specPath=Path.join(path,config.outPutDir,'openapi.yml');
-    }else {
-      specPath= Path.join(path, 'openapi.yml')
+    let specPath: string;
+    let htmlPath: string;
+    if (config.outPutDir) {
+      specPath = Path.join(path, config.outPutDir, 'openapi.yml');
+      htmlPath = Path.join(path, config.outPutDir, 'swagger.yml');
+    } else {
+      specPath = Path.join(path, 'openapi.yml');
+      htmlPath = Path.join(path, 'swagger.html');
     }
 
+    if (argv.find((el) => el === '--html')) {
+      const htmlFile = Path.join(__dirname, '..', 'res', 'html', 'index.html');
+      fs.copyFileSync(htmlFile, htmlPath);
+      console.log(`Html generated`);
+    }
     writeToFile(specPath, config, rawData);
     console.log(`Transformation complete`);
+
+    if (argv.find((el) => el === '--serve')) {
+      const htmlFile = Path.join(__dirname, '..', 'res', 'html', 'index.html');
+      fs.copyFileSync(htmlFile, htmlPath);
+      console.log(`Start Serve`);
+      const app = express();
+      app.get('/', (req, res) => {
+        fs.createReadStream(htmlFile).pipe(res);
+      });
+      app.get('/openapi.yml', (req, res) => {
+        fs.createReadStream(specPath).pipe(res);
+      });
+      app.listen(9000, () => {
+        console.log(`listen on http://localhost:9000`);
+      });
+    }
   } else {
     console.error(`No config file @${path}`);
   }

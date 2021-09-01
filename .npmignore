@@ -10,3 +10,4 @@ tsconfig.json
 .idea
 .gitlab-ci.yml
 openapi.yml
+swagger.html

@@ -22,3 +22,4 @@ openapi.yml
 glconf.json
 /openapi/
 !jest.config.js
+swagger.html
