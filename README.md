@@ -1,10 +1,13 @@
 # Docs to OpenApi v.3
+
+## Documentation
+- [Docs](https://grandlinex.github.io/docs/utils/#docs-to-openapi-v3)
+
+
 [![GitHub](https://badge.fury.io/gh/GrandlineX%2Fdocs-to-openapi.svg)](https://github.com/GrandlineX/docs-to-openapi)
 [![NPM](https://img.shields.io/static/v1?label=NPM&message=Package&color=red&logo=NPM)](https://www.npmjs.com/package/@grandlinex/docs-to-openapi)
 ![TS](https://img.shields.io/static/v1?label=Language&message=TypeScript&color=blue&logo=TypeScript)
 
-## Documentation
-- [Docs](https://grandlinex.github.io/docs/utils/#docs-to-openapi-v3)
 
 ## Description
 
