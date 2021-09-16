@@ -1,6 +1,7 @@
 import * as Path from 'path';
 import { GlConfig, parseCom, parseConfig,writeToFile } from '../src';
 import fileIndexer from '../src/utils/fileIndexer';
+import mergePath from '../src/utils/mergePath';
 
 const base = __dirname;
 
@@ -21,7 +22,7 @@ describe('full generator test', () => {
   })
   test('indexer', async () => {
     const rawData=fileIndexer(testModPath,["ts"])
-     expect(rawData.length).toBe(3);
+     expect(rawData.length).toBe(4);
   })
   test('wireToFile', async () => {
     let config=parseConfig(configPath) as GlConfig;
@@ -29,6 +30,6 @@ describe('full generator test', () => {
     testModExternal.forEach((external)=>{
       rawData=rawData.concat(fileIndexer(external,["ts"]))
     })
-    writeToFile(specPath,config,rawData)
+    writeToFile(specPath,config,mergePath(rawData))
   })
 })

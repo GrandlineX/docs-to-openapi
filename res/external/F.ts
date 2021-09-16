@@ -1,11 +1,11 @@
 /**
  * @name F
  * @openapi
- * /pingexternal:
- *   get:
+ * /pong:
+ *   delete:
  *     summary: authorized pingexternal test
  *     tags:
- *       - Intercom
+ *       - GrandLineX
  *     responses:
  *       200:
  *         description: OK

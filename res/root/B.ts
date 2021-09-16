@@ -5,7 +5,7 @@
  *   get:
  *     summary: authorized pong test
  *     tags:
- *       - Intercom
+ *       - GrandLineX
  *     responses:
  *       200:
  *         description: OK

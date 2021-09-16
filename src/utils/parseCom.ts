@@ -1,8 +1,8 @@
 import * as fs from 'fs';
-
+import yaml from 'js-yaml';
 import { parse } from 'comment-parser';
 
-export default function parseCom(path: string): string | null {
+export default function parseCom(path: string): unknown | null {
   try {
     const out: string[] = [];
     const configText = fs.readFileSync(path, 'utf-8');
@@ -26,9 +26,12 @@ export default function parseCom(path: string): string | null {
     if (out.length === 0) {
       return null;
     }
-    return out.join('\n');
+
+    const temp = out.join('\n');
+
+    return yaml.load(temp);
   } catch (e) {
-    console.error('Cant Read Comment');
+    console.error(`Cant Read Comment @${path}`);
     return null;
   }
 }

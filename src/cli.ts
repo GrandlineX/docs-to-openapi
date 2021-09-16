@@ -5,6 +5,7 @@ import express from 'express';
 import { parseConfig, writeToFile } from './utils';
 import { GlConfig } from './lib';
 import fileIndexer from './utils/fileIndexer';
+import mergePath from './utils/mergePath';
 
 const { cwd, argv, env } = process;
 const version = env.npm_package_version;
@@ -25,6 +26,7 @@ function makeApi() {
       const externalDir = Path.join(path, external);
       rawData = rawData.concat(fileIndexer(externalDir, config.filetypes));
     });
+
     let specPath: string;
     let htmlPath: string;
     if (config.outPutDir) {
@@ -40,12 +42,11 @@ function makeApi() {
       fs.copyFileSync(htmlFile, htmlPath);
       console.log(`Html generated`);
     }
-    writeToFile(specPath, config, rawData);
+    writeToFile(specPath, config, mergePath(rawData));
     console.log(`Transformation complete`);
 
     if (argv.find((el) => el === '--serve')) {
       const htmlFile = Path.join(__dirname, '..', 'res', 'html', 'index.html');
-      fs.copyFileSync(htmlFile, htmlPath);
       console.log(`Start Serve`);
       const app = express();
       app.get('/', (req, res) => {

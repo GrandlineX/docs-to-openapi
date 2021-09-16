@@ -1,11 +1,12 @@
 import * as fs from 'fs';
 import * as Path from 'path';
 import parseCom from './parseCom';
+import mergePath from './mergePath';
 
 function handleElement(
   rootPath: string,
   el: string,
-  out: string[],
+  out: unknown[],
   fileTypes: string[]
 ) {
   const fullPath = Path.join(rootPath, el);
@@ -33,8 +34,8 @@ function handleElement(
 export default function fileIndexer(
   rootPath: string,
   fileTypes: string[]
-): string[] {
-  const out: string[] = [];
+): unknown[] {
+  const out: unknown[] = [];
 
   if (!fs.existsSync(rootPath)) {
     throw new Error('Root folder not exist');

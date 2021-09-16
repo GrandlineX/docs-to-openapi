@@ -5,7 +5,7 @@
  *   get:
  *     summary: authorized ping test
  *     tags:
- *       - Intercom
+ *       - GrandLineX
  *     responses:
  *       200:
  *         description: OK
