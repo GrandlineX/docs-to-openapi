@@ -1,6 +1,6 @@
 {
   "name": "@grandlinex/docs-to-openapi",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "OpenApiTag to OpenapiSpec",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,7 +32,7 @@
     "comment-parser": "^1.2.4",
     "express": "^4.17.1",
     "js-yaml": "^4.1.0"
-   },
+  },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/http-server": "^0.12.1",
